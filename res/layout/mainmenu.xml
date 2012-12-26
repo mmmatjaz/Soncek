@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rel_lay"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:scaleType="centerCrop"
+        android:src="@drawable/dr02"
+        android:visibility="visible" />
+    
+    <ImageView
+        android:id="@+id/bg_im"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:scaleType="centerCrop"
+        android:src="@drawable/dr01"
+        android:visibility="visible" />
+    
+    <TextView
+        android:id="@+id/textViewTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:paddingRight="20dp"
+        android:layout_marginTop="140dp"
+        android:gravity="right"
+        android:text="sonček"
+        android:textColor="#eee"
+        android:textScaleX="1.2"
+        android:textSize="40sp" />
+
+    <LinearLayout
+        android:id="@+id/buttons_container"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:paddingRight="20dp"
+        android:layout_marginTop="50dp"
+        android:orientation="horizontal" >
+
+        <Button
+            android:id="@+id/shbtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/ic_menu_share_holo_dark" />
+
+        <Button
+            android:id="@+id/switch_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/ic_menu_help_holo_light" />
+    </LinearLayout>
+
+    <GridView
+        android:id="@+id/gridView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/textViewTitle"
+        android:numColumns="1"
+        android:paddingTop="10dp"  
+        android:paddingRight="20dp"
+        android:gravity="right"
+        android:listSelector="@drawable/rumena">
+        <!-- android:background="@drawable/bgoverlay" -->
+    	
+
+     </GridView>
+
+    
+    <RelativeLayout
+            android:id="@+id/linearLayoutAbout"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/textViewTitle"
+            android:layout_alignParentRight="true"
+            android:orientation="vertical" 
+            android:padding="20dp"
+              >
+            <!--  android:background="@drawable/bgoverlay"-->
+    		
+
+            <TextView
+                android:id="@+id/aboutText"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentRight="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:text="@string/o"
+                android:textColor="#eee"
+                android:gravity="right" />
+
+            <TextView
+                android:id="@+id/aboutText1"
+                android:layout_alignParentRight="true"
+                android:layout_below="@+id/aboutText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:text="@string/about"
+                android:textColor="#eee"
+                android:gravity="right" />
+
+            <TextView
+                android:id="@+id/aboutText2"
+                android:layout_alignParentRight="true"
+                android:layout_below="@+id/aboutText1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:autoLink="web"
+                android:padding="5dp"
+                android:layout_marginTop="10dp"
+                android:text="@string/vreme"
+                android:textColor="#eee"
+                android:textSize="13sp"
+                android:gravity="right" />
+
+            <TextView
+                android:id="@+id/aboutText3"
+                android:layout_alignParentRight="true"
+                android:layout_below="@+id/aboutText2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:text="@string/author"
+                android:textColor="#eee"
+                android:textSize="10sp"
+                android:gravity="right" />
+        </RelativeLayout>
+
+    <include
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textViewTitle"
+        android:layout_alignParentRight="true"
+        android:orientation="vertical" 
+        android:padding="20dp"
+        layout="@layout/welcome" />
+    
+    <include
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textViewTitle"
+        android:layout_alignParentRight="true"
+        android:orientation="vertical" 
+        android:padding="20dp"
+        layout="@layout/no_con" />
+
+</RelativeLayout>

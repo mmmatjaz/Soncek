@@ -1,0 +1,151 @@
+
+body .vsebina {
+	background-color: #ffffff;
+}
+
+td.vsebina p {
+  text-align: left; /* justify; */
+  color: #222222
+}
+
+td.vsebina ul li {
+  list-style-type: disc;
+  margin-left: -15px;
+  padding-left: 0px;
+  margin-bottom: 3px;
+}
+
+td.vsebina ul {
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
+
+hr {
+  border-top: 1px dotted #878787;
+  border-bottom: 0px none;
+  border-left: 0px none;
+  border-right: 0px none;
+}
+
+td.vsebina {
+  font-size: small; /* 12? */
+  color: #222222;
+}
+
+td.vsebina h1 {
+  font-size: large; /* 18 */
+  /* color: #026c0e; prej
+    tole je isto kot na arso.gov, ampak je presvetlo
+    (gl. tudi nizje):
+  color: #529CBA;  */
+
+  color: #5198B5;
+  padding-top: 6;
+  font-weight: bold;
+}
+
+
+td.vsebina h2 {
+  font-size: medium; /* 14 */
+  /* color: #026c0e; */
+  color: #5198B5;
+  font-weight: bold;
+}
+
+td.vsebina h3,
+td.vsebina h4 { 
+  font-size: small; /* 12px; */
+  /* color: #026c0e; */
+  color: #5198B5;
+  font-weight: normal; /*			XXX: hack za trenutno slabe razmere (linki so ponavadi v h4 */
+}
+
+td.vsebina a,
+td.vsebina a:link,
+td.vsebina a:visited,
+td.vsebina a:active {
+  /* color: #429b00; */
+  color: #5198B5;
+}
+
+td.vsebina a:hover {
+  /* background-color: #eaf5e0; */
+  background-color: #dfe7ed;
+  text-decoration: none;
+}
+
+td.vsebina table.aladin {
+  border: 1px solid #deeeda;
+}
+td.vsebina table.content,
+td.vsebina table.defaultPostForm {
+  border: 0px;
+} 
+
+td.vsebina table tr:nth-child(odd) {
+  background-color: #f8f8f8;
+}
+
+td.vsebina table.aladin th {
+  text-align: center;
+  font-weight: bold;
+  padding: 4px;
+  color: #3a4036;
+  border: 2px solid #deeeda;
+  background-color: #deeeda;
+/*  background-color: #e3f3e1; */
+}
+
+td.vsebina table.aladin td {
+  vertical-align: top;
+  padding: 3px;
+  color: #3a4036;
+  border: 1px solid #deeeda;
+  text-align: right;
+  padding-right: 1em;
+}
+
+td.vsebina table td.tableData,
+td.vsebina table.defaultPostForm td,
+td.vsebina table.defaultPostForm tr.fileUploadRow td {
+  vertical-align: top;
+  padding: 3px;
+  color: #3a4036;
+  border: 0px;
+  text-align: left;
+  padding-right: 1em;
+}
+
+td.vsebina table.podatki td:first-child {
+  text-align: left;
+  font-weight: bold;
+}
+
+
+td.vsebina table.aladin td:first-child {
+  text-align: left;
+  font-weight: bold;
+}
+td.vsebina table.aladin td {
+  text-align: center;
+  vertical-align: middle;
+  padding-right: 3px;
+}
+
+td.vsebina table.aladin-slika {
+  border: 0px none;
+}
+td.vsebina table.aladin-slika tr {
+  background-color: transparent;
+  border: 0px none;
+}
+td.vsebina table.aladin-slika td,
+td.vsebina table.aladin-slika th {
+  text-align: center;
+  background-color: transparent;
+  border: 0px none;
+}
+td.vsebina table.aladin-slika th {
+  width: 33.33%
+}
