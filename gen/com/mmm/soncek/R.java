@@ -54,19 +54,19 @@ public final class R {
         public static final int thumb=0x7f020023;
     }
     public static final class id {
-        public static final int BottomLayout=0x7f080016;
+        public static final int BottomLayout=0x7f080010;
         public static final int LayoutOfflajn=0x7f08001a;
         public static final int LayoutWelcome=0x7f08001d;
-        public static final int TextViewInfo=0x7f080015;
+        public static final int TextViewInfo=0x7f080016;
         public static final int aboutText=0x7f080009;
         public static final int aboutText1=0x7f08000a;
         public static final int aboutText2=0x7f08000b;
         public static final int aboutText3=0x7f08000c;
         public static final int bg_im=0x7f080002;
-        public static final int buttonBack=0x7f080011;
+        public static final int buttonBack=0x7f080012;
         public static final int buttonConOK=0x7f08001c;
         public static final int buttonOK=0x7f08001e;
-        public static final int buttonOpt=0x7f080012;
+        public static final int buttonOpt=0x7f080013;
         public static final int buttonPlay=0x7f080017;
         public static final int buttons_container=0x7f080004;
         public static final int gridView1=0x7f080007;
@@ -81,10 +81,10 @@ public final class R {
         public static final int shbtn=0x7f080005;
         public static final int switch_btn=0x7f080006;
         public static final int textView1=0x7f08001b;
-        public static final int textViewTime=0x7f080014;
+        public static final int textViewTime=0x7f080015;
         public static final int textViewTitle=0x7f080003;
-        public static final int texts=0x7f080013;
-        public static final int topLinLay=0x7f080010;
+        public static final int texts=0x7f080014;
+        public static final int topLinLay=0x7f080011;
         public static final int webView1=0x7f080000;
     }
     public static final class layout {

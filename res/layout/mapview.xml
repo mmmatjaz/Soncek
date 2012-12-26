@@ -16,8 +16,9 @@
         android:id="@+id/imagecontainer"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:layout_alignParentTop="true" 
-        />
+        android:layout_above="@+id/BottomLayout"
+        android:layout_alignParentTop="true" />
+
     <!-- android:layout_above="@+id/BottomLayout"
          -->
      <LinearLayout
@@ -74,7 +75,7 @@
 		android:layout_alignParentBottom="true"
 		android:layout_alignParentLeft="true"
 		android:layout_alignParentRight="true" 
-		android:background="@color/barbg" >
+		 >
 		
 		<Button
 		   android:id="@+id/buttonPlay"

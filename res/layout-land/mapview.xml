@@ -4,11 +4,20 @@
     android:layout_height="match_parent" 
     android:orientation="horizontal"  >
                
-    <com.mmm.soncek.TouchImageView 
-	    android:id="@+id/imagecontainer"
-	    android:layout_width="fill_parent"
-		android:layout_height="fill_parent"
-		android:background="@drawable/dr04"/>
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:scaleType="centerCrop"
+        android:src="@drawable/dr04"
+        android:visibility="visible" />
+    
+    <com.mmm.soncek.TouchImageView
+        android:id="@+id/imagecontainer"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_above="@+id/BottomLayout"
+        />
 
      <LinearLayout
 	    android:id="@+id/topLinLay"
@@ -45,7 +54,7 @@
 		android:layout_alignParentBottom="true"
 		android:layout_alignParentLeft="true"
 		android:layout_alignParentRight="true" 
-		android:background="@color/barbg" >
+		 >
 		
         <Button
 	        android:id="@+id/buttonBack"
@@ -73,6 +82,7 @@
 		    android:layout_height="wrap_content" 
 		    android:layout_gravity="center_vertical"
 		    android:progressDrawable="@drawable/progress_fill"
+		    android:thumb="@drawable/thumb"
 		    android:paddingLeft="10dp"
 		    android:paddingRight="10dp"
 		    android:maxHeight="3dp" />

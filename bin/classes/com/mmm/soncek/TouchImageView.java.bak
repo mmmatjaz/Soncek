@@ -97,27 +97,24 @@ public class TouchImageView extends ImageView {
 
         setOnTouchListener(new OnTouchListener() {
 
+
+
+
             @Override
             public boolean onTouch(View v, MotionEvent event) {
                 mScaleDetector.onTouchEvent(event);
                 PointF curr = new PointF(event.getX(), event.getY());
 
+
+
+
+
+
                 switch (event.getAction()) {
                     case MotionEvent.ACTION_DOWN:
                     	last.set(curr);
                         start.set(last);
-                        if (event.getX()>(1-swipeMin)*viewWidth && mode!=ZOOM){
-	                    	swipeStart.set(event.getX(), event.getY());
-	                    	swipe=SWIPEfR;
-	                    	drawGradRigth(0.5f);
-	                    }
-	                    else if (event.getX()<swipeMin*viewHeight && mode!=ZOOM){
-	                    	swipeStart.set(event.getX(), event.getY());
-	                    	swipe=SWIPEfL;
-	                    	drawGradLeft(0.5f);
-	                    }
-	                    else
-	                    	mode = DRAG;
+                        mode = DRAG;
                         break;
                         
                     case MotionEvent.ACTION_MOVE:
@@ -129,20 +126,7 @@ public class TouchImageView extends ImageView {
                             matrix.postTranslate(fixTransX, fixTransY);
                             fixTrans();
                             last.set(curr.x, curr.y);
-                        } else if (swipe==SWIPEfR) {
-	            			float deltaX = curr.x - swipeStart.x;
-	            			float r=.5f+Math.abs(deltaX)/(swipeMax*viewWidth)/2;
-	            			if (r>1) r=1;
-	            			drawGradCancel();
-	            			drawGradRigth(r);
-	            		}
-	            		if (swipe==SWIPEfL) {
-	            			float deltaX = curr.x - swipeStart.x;
-	            			float r=.5f+Math.abs(deltaX)/(swipeMax*viewWidth)/2;
-	            			if (r>1) r=1;
-	            			drawGradCancel();
-	            			drawGradLeft(r);
-	            		}
+                        }
                         break;
 
                     case MotionEvent.ACTION_UP:
@@ -151,17 +135,6 @@ public class TouchImageView extends ImageView {
                         int yDiff = (int) Math.abs(curr.y - start.y);
                         if (xDiff < CLICK && yDiff < CLICK)
                             performClick();
-                        
-                        float deltaX = curr.x - swipeStart.x;
-            			float deltaY = curr.y - swipeStart.y;
-                        if (swipe==SWIPEfR && Math.abs(deltaX)>swipeMax*viewWidth) {        		
-	            			tata.forward();
-	            		} else drawGradCancel();	            		
-	            		if (swipe==SWIPEfL && Math.abs(deltaX)>swipeMax*viewWidth) {          		
-	            			tata.back();
-	            		} else drawGradCancel();
-	            		swipe=NONE;
-	            		
                         break;
 
                     case MotionEvent.ACTION_POINTER_UP:
@@ -237,19 +210,7 @@ public class TouchImageView extends ImageView {
         maxScale = x;
     }
 
-   
-    @Override
-    public void setImageBitmap(Bitmap bm) { 
-    	
-        if(bm != null) {
-        	saveRef=bm;
-        	bmap = bm.copy(Bitmap.Config.ARGB_8888, true);
-        	
-        	super.setImageBitmap(bmap);
-        }
-    }
-
- private class ScaleListener extends ScaleGestureDetector.SimpleOnScaleGestureListener {
+    private class ScaleListener extends ScaleGestureDetector.SimpleOnScaleGestureListener {
         @Override
         public boolean onScaleBegin(ScaleGestureDetector detector) {
             mode = ZOOM;
@@ -258,21 +219,7 @@ public class TouchImageView extends ImageView {
 
         @Override
         public boolean onScale(ScaleGestureDetector detector) {
-        	float detScFac=detector.getScaleFactor();
-			float detFocX=detector.getFocusX();
-			float detFocY=detector.getFocusY();	
-			
-			scaleRoutine(detScFac,detFocX,detFocY);
-            return true;
-        }
-        
-        public void setScale(float scale)
-    	{
-    		scaleRoutine(scale,viewWidth/2,viewHeight/2);
-    	}
-        
-        public boolean scaleRoutine(float detScFac,float detFocX,float detFocY) {
-        	float mScaleFactor = detScFac;
+            float mScaleFactor = detector.getScaleFactor();
             float origScale = saveScale;
             saveScale *= mScaleFactor;
             if (saveScale > maxScale) {
@@ -286,10 +233,10 @@ public class TouchImageView extends ImageView {
             if (origWidth * saveScale <= viewWidth || origHeight * saveScale <= viewHeight)
                 matrix.postScale(mScaleFactor, mScaleFactor, viewWidth / 2, viewHeight / 2);
             else
-                matrix.postScale(mScaleFactor, mScaleFactor, detFocX, detFocY);
+                matrix.postScale(mScaleFactor, mScaleFactor, detector.getFocusX(), detector.getFocusY());
 
             fixTrans();
-        	return false;        	
+            return true;
         }
     }
 
