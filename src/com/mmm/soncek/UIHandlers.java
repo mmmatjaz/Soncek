@@ -1,6 +1,5 @@
 package com.mmm.soncek;
 
-import android.content.Context;
 import android.content.Intent;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
@@ -10,6 +9,7 @@ import android.view.View;
 import android.view.View.OnTouchListener;
 import android.widget.SeekBar;
 import android.widget.SeekBar.OnSeekBarChangeListener;
+import mmmatjaz.sonce.R;
 
 public class UIHandlers {
 	ImageActivity tata;
@@ -41,7 +41,7 @@ public class UIHandlers {
 						R.drawable.ic_menu_back));
 		iconMenu=new BitmapDrawable(tata.getResources(), 
 				BitmapFactory.decodeResource(tata.getResources(), 
-						R.drawable.ic_menu_mapmode));
+						R.drawable.ic_menu_slideshow));
 		
 		SeekBarHandler = new SeekBar.OnSeekBarChangeListener(){
 
@@ -50,7 +50,7 @@ public class UIHandlers {
 					boolean fromUser) {		
 				if (tata.onResumeDone){
 					tata.Offset=seekBar.getProgress();
-					Log.d("file","p_changed, off= "+seekBar.getProgress()+"/"+seekBar.getMax());
+					//Log.d("file","p_changed, off= "+seekBar.getProgress()+"/"+seekBar.getMax());
 					tata.updateDisplay();
 				}
 			}

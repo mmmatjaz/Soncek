@@ -11,9 +11,7 @@ public class Napoved implements Rules{
 	
 	class InitTask extends AsyncTask<String, String, String> {
 		ImageActivity tata;	
-		private File CachePath;
 		public InitTask(ImageActivity ia, File cachePath)	{
-			CachePath=cachePath;
 			tata=ia;
 			isInitialized=false;
 		}

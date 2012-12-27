@@ -1,13 +1,13 @@
 package com.mmm.soncek;
 
 import java.io.File;
+import mmmatjaz.sonce.R;
 
 import android.app.Activity;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.os.Handler;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -56,7 +56,7 @@ public class ImageActivity extends Activity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.mapview);
-        Log.d("file","onCreate");
+        //Log.d("file","onCreate");
         // capture widgets
         captureWidgets(); 
         onResumeDone=false;
@@ -76,7 +76,7 @@ public class ImageActivity extends Activity{
 	        		Offset=0;
 	        	else
 	        	Offset++;
-	        	Log.d("timer","running "+Offset);
+	        	//Log.d("timer","running "+Offset);
 	        	mSeekBar.setMax(OffsetMax);
 		    	mSeekBar.setProgress(Offset);
 	        	   	
@@ -112,7 +112,7 @@ public class ImageActivity extends Activity{
 	    // hide controls
 	    showControls(false);
 	    mImageView.setActivity(this);
-	    
+	    mImageView.setFadingEdgeLength(10);
     }
 
 	
@@ -132,19 +132,19 @@ public class ImageActivity extends Activity{
 	public void onResume() 	{
 		super.onResume();   
 		onResumeDone=true;
-		Log.d("file","resume");
+		//Log.d("file","resume");
 		timerRunning=false;
 	    OffsetMax=	Rules.getNoImages();
 	    if (!activityRecovered)    {
-	    	Log.d("offset","fresh");
+	    	//Log.d("offset","fresh");
 	    	Offset = Rules.getInitialOffset();
 	    	Rules.Initialize(this, cachePath);
 	    }
 	    else {
 	    	showControls(true);
 	    }
-		Log.d("offset","onResume offset set: "+Offset);
-		String[] swithces=Rules.getOptionList();
+		//Log.d("offset","onResume offset set: "+Offset);
+		//String[] swithces=Rules.getOptionList();
 		
 		int temp=Offset;
 		mSeekBar.setMax(OffsetMax);
@@ -158,7 +158,7 @@ public class ImageActivity extends Activity{
 	@Override
 	public void onPause() 	{
 		super.onPause();
-		Log.d("file","onPause");
+		//Log.d("file","onPause");
 	}
 	@Override
 	public void onSaveInstanceState(Bundle savedInstanceState) {
@@ -166,7 +166,7 @@ public class ImageActivity extends Activity{
 		savedInstanceState.putInt("Offset", Offset);
 		savedInstanceState.putInt("map", mapType);
 		savedInstanceState.putBundle("rules", Rules.getSettings());
-		Log.d("file","saved");
+		//Log.d("file","saved");
 	}
 	@Override
     public void onRestoreInstanceState(Bundle savedInstanceState) {
@@ -177,7 +177,7 @@ public class ImageActivity extends Activity{
 		if (rulBun!=null && !rulBun.isEmpty())
 			Rules.setSettings(rulBun);		
 		activityRecovered=true;
-		Log.d("file","restored");
+		//Log.d("file","restored");
 	}
 	
 	private void captureWidgets() {
@@ -216,7 +216,7 @@ public class ImageActivity extends Activity{
 			filepath= cachePath.toString()+"/"+Rules.getFileName(Offset);
 			URL 	= Rules.GetUrl(Offset);
 			Time 	= Rules.getLocalTime(Offset);
-			Log.d("file","update "+Offset+" "+Rules.getFileName(Offset));
+			//Log.d("file","update "+Offset+" "+Rules.getFileName(Offset));
 			mTextLocal.setText(Time);
 			
 			java.io.File file = new java.io.File(filepath);
@@ -245,7 +245,7 @@ public class ImageActivity extends Activity{
     	}
     	
     	if (timerRunning) {
-    		Log.d("timer","refresh");
+    		//Log.d("timer","refresh");
     		handler.removeCallbacks(Runnable);
     		handler.postDelayed(Runnable, 300);
 		}	

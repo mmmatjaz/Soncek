@@ -8,18 +8,16 @@ import java.net.URL;
 import java.net.URLConnection;
 
 import android.os.AsyncTask;
-import android.util.Log;
+//import android.util.Log;
 
 public class BackGndDownloader extends AsyncTask<String, String, String>
 {
-	private String downPath;
 	private String fn;
 	public ImageActivity tata;
 	
 	public BackGndDownloader(ImageActivity act)
 	{
 		tata=act;
-		downPath=tata.cachePath.toString()+"/";
 	}
 		
 	public int downloadImage(String FileName, String sUrl) 
@@ -53,7 +51,7 @@ public class BackGndDownloader extends AsyncTask<String, String, String>
             }
         		
         } catch (Exception e) {
-        	Log.d("download","exception: "+e.getMessage());
+        	//Log.d("download","exception: "+e.getMessage());
         	return -2;
         }
         
@@ -71,7 +69,7 @@ public class BackGndDownloader extends AsyncTask<String, String, String>
 	@Override
 	protected String doInBackground(String... params) 
 	{
-		final String temp=params[0];
+		//final String temp=params[0];
 		int dBytes=downloadImage(params[0], params[1]);
 		if (dBytes==-2)
 			return " Ni povezave";

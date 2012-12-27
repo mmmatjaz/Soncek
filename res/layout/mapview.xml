@@ -40,7 +40,7 @@
             android:id="@+id/buttonOpt"
             android:layout_width="wrap_content"
             android:layout_height="fill_parent"
-            android:background="@drawable/ic_menu_mapmode" />
+            android:background="@drawable/ic_menu_slideshow" />
         
 		
 		<LinearLayout

@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-	<string name="welcome">"Sonček je lepši in \nima nov fičr! Swajpni \nslike od levega ali \ndesnega roba."</string>
+	<string name="welcome">"Sonček je lepši in ima \nnov fičr. Potegni slike \nod stranskih robov in \ndvoklikni za zoom."</string>
+	<string name="welcomeeng">Sonček is preetier and has new features. Swipe the images and double tap to zoom!</string>
     <string name="about">"The data is property of Slovenian Environment Agency. Data transmission charges may apply."</string>
     <string name="vreme">www.arso.gov.si</string>
     <string name="Share">Share\nSonček</string>
     <string name="o">"Podatki so last Agencije RS za okolje. Operater lahko zaračuna prenos podatkov."</string>
     <string name="author">"Author: Matjaž Ogrinc"</string>
-    <string name="app_name">Sonček2</string>
+    <string name="app_name">Sonček</string>
     <string name="oflajn">"Sonček ne najde \ninternetov. :/\n"</string>
     <string name="browse">""</string>
     <string name="hello_world">Hello world!</string>

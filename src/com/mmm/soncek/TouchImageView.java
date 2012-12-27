@@ -13,17 +13,16 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
-import android.graphics.LinearGradient;
 import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.graphics.PointF;
 import android.graphics.RadialGradient;
-import android.graphics.RectF;
 import android.graphics.Shader;
 import android.graphics.Shader.TileMode;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.util.Log;
+import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.ScaleGestureDetector;
 import android.view.View;
@@ -64,11 +63,14 @@ public class TouchImageView extends ImageView {
 
    
     ScaleGestureDetector mScaleDetector;
-    
+    GestureDetector mTapDetector;
+    ScaleListener sl;
     public Context context;
-	private ScaleListener sl;
+	//private ScaleListener sl;
 	public Bitmap bmap;
 	private Bitmap saveRef;
+	private int bmWidth;
+	private int bmHeight;
 
     public TouchImageView(Context context) {
         super(context);
@@ -89,17 +91,20 @@ public class TouchImageView extends ImageView {
   private void sharedConstructing(Context context) {
         super.setClickable(true);
         this.context = context;
-        mScaleDetector = new ScaleGestureDetector(context, new ScaleListener());
+        sl=new ScaleListener();
+        mScaleDetector = new ScaleGestureDetector(context, sl);
+        mTapDetector = new GestureDetector(context, new DoubleTapListener());
         matrix = new Matrix();
         m = new float[9];
         setImageMatrix(matrix);
         setScaleType(ScaleType.MATRIX);
-
+        
         setOnTouchListener(new OnTouchListener() {
 
             @Override
             public boolean onTouch(View v, MotionEvent event) {
                 mScaleDetector.onTouchEvent(event);
+                mTapDetector.onTouchEvent(event);
                 PointF curr = new PointF(event.getX(), event.getY());
 
                 switch (event.getAction()) {
@@ -153,7 +158,7 @@ public class TouchImageView extends ImageView {
                             performClick();
                         
                         float deltaX = curr.x - swipeStart.x;
-            			float deltaY = curr.y - swipeStart.y;
+            			//float deltaY = curr.y - swipeStart.y;
                         if (swipe==SWIPEfR && Math.abs(deltaX)>swipeMax*viewWidth) {        		
 	            			tata.forward();
 	            		} else drawGradCancel();	            		
@@ -249,8 +254,58 @@ public class TouchImageView extends ImageView {
         }
     }
 
- private class ScaleListener extends ScaleGestureDetector.SimpleOnScaleGestureListener {
+    public void scaleOnDoubleTap(){
+    	float[] mtrx=new float[9];
+		matrix.getValues(mtrx);
+		float curScale=mtrx[Matrix.MSCALE_X];
+    	float nDisp=viewWidth/viewHeight;
+        float nIm=bmWidth/bmHeight;
+        // landscape:portrait
+        float tarScale;
+        if (bmWidth*curScale>=viewWidth && bmHeight*curScale>=viewHeight){
+        	tarScale= nDisp>nIm ? (float)viewHeight/(float)bmHeight : (float)viewWidth/(float)bmWidth;
+        	this.setScale(tarScale/curScale);
+        }
+    	else {
+    		tarScale= nDisp>nIm ?  (float)viewWidth/(float)bmWidth : (float)viewHeight/(float)bmHeight;
+        	//tarScale= nDisp>nIm ? viewWidth/bmWidth : bmWidth/bmHeight;
+    		Log.d("scale","viewWidth: "+viewWidth+" bmWidth: "+bmWidth);
+    		Log.d("scale","viewHeight: "+viewHeight+" bmHeight: "+bmHeight);
+    		Log.d("scale","tar: "+tarScale+" mat: "+curScale+" save: "+saveScale);
+    		this.setScale(tarScale/curScale);
+    	}
+        
+        
+    }
+    
+    public void setScale(float scale){
+    	sl.setScale(scale);
+    	setImageMatrix(matrix);
+        invalidate();
+	}
+    
+    private class DoubleTapListener extends GestureDetector.SimpleOnGestureListener {
+
         @Override
+        public boolean onDown(MotionEvent e) {
+            return true;
+        }
+        // event when double tap occurs
+        @Override
+        public boolean onDoubleTap(MotionEvent e) {
+            float x = e.getX();
+            float y = e.getY();
+
+            Log.d("Double Tap", "Tapped at: (" + x + "," + y + ")");
+            scaleOnDoubleTap();
+            return true;
+        }
+       
+    }
+    
+    private class ScaleListener extends ScaleGestureDetector.SimpleOnScaleGestureListener {
+       
+    	@Override
         public boolean onScaleBegin(ScaleGestureDetector detector) {
             mode = ZOOM;
             return true;
@@ -352,8 +407,8 @@ public class TouchImageView extends ImageView {
             Drawable drawable = getDrawable();
             if (drawable == null || drawable.getIntrinsicWidth() == 0 || drawable.getIntrinsicHeight() == 0)
                 return;
-            int bmWidth = drawable.getIntrinsicWidth();
-            int bmHeight = drawable.getIntrinsicHeight();
+            bmWidth = drawable.getIntrinsicWidth();
+            bmHeight = drawable.getIntrinsicHeight();
             
             Log.d("bmSize", "bmWidth: " + bmWidth + " bmHeight : " + bmHeight);
 

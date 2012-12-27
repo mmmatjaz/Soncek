@@ -1,7 +1,6 @@
 package com.mmm.soncek;
 
 import java.io.File;
-
 import android.os.Bundle;
 
 public interface Rules {

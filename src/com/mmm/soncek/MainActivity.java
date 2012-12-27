@@ -2,6 +2,7 @@ package com.mmm.soncek;
 
 
 import java.io.File;
+import mmmatjaz.sonce.R;
 
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
@@ -271,7 +272,7 @@ public class MainActivity extends Activity {
     						actLayout==ActLayouts.About ? R.drawable.ic_menu_moreoverflow : R.drawable.ic_menu_help_holo_light));
     		switch ( theMotion.getAction() ) {    	    	
 	    	case MotionEvent.ACTION_DOWN:		    		
-	    		ikona.setAlpha(100);    		
+	    		ikona.setAlpha(100);   
 	    		Button.setBackgroundDrawable(ikona);
 		    	break;
 		    case MotionEvent.ACTION_UP: 

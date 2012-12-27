@@ -7,6 +7,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLConnection;
 import java.util.Calendar;
+import mmmatjaz.sonce.R;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
@@ -30,7 +31,7 @@ public class Aladin implements Rules {
 	            int lenghtOfFile = connection.getContentLength();
 	            if (lenghtOfFile>2000) return true;        		
 	        } catch (Exception e) {
-	        	Log.d("download","exception: "+e.getMessage());
+	        	//Log.d("download","exception: "+e.getMessage());
 	        	return false;
 	        }        
 	        return false;

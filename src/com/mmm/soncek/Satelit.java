@@ -2,7 +2,6 @@ package com.mmm.soncek;
 
 import java.io.File;
 import java.util.Calendar;
-
 import android.os.Bundle;
 
 public class Satelit implements Rules{

@@ -2,6 +2,7 @@ package com.mmm.soncek;
 
 import java.io.IOException;
 
+import mmmatjaz.sonce.R;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 
