@@ -56,23 +56,26 @@ public class Aladin implements Rules {
 			isInitialized=false;
 			GeneratedYesterday=false;
 			GeneratedAtMidnight=false;
-			
+			//Log.d("aladin","ena "+getFileName(0));
 			if (new java.io.File(CachePath,getFileName(0)).length()>110
-					||	URLexists(GetUrl(0)))	{
+					||	touchImage(GetUrl(0)))	{
 				isInitialized=true;
+				return " Konèano ";
 			} else	{
 				GeneratedYesterday=false;
 				GeneratedAtMidnight=true;
 			}
-			
+			//Log.d("aladin","dva "+getFileName(0));
 			if (!isInitialized && (
 				new java.io.File(CachePath,getFileName(0)).length()>110
-					||	URLexists(GetUrl(0))))	{
+					||	touchImage(GetUrl(0))))	{
 				isInitialized=true;
+				return " Konèano ";
 			} else	{
 				GeneratedYesterday=true;
 				GeneratedAtMidnight=false;
 			}
+			//Log.d("aladin","tri "+getFileName(0));
 			return " Konèano ";
 		}
 		@Override

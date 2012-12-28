@@ -3,6 +3,7 @@ package com.mmm.soncek;
 import java.io.File;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.net.URLConnection;
 
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -15,6 +16,19 @@ public class Napoved implements Rules{
 			tata=ia;
 			isInitialized=false;
 		}
+		private boolean touchImage(String sUrl) {
+			try {       	
+	            URL url = new URL(sUrl);
+	            URLConnection connection = url.openConnection();
+	            connection.connect();
+	            int lenghtOfFile = connection.getContentLength();
+	            if (lenghtOfFile>2000) return true;        		
+	        } catch (Exception e) {
+	        	//Log.d("download","exception: "+e.getMessage());
+	        	return false;
+	        }        
+	        return false;
+	    }
 		public boolean URLexists(String URLName){
 			try {
 				HttpURLConnection.setFollowRedirects(false);			
@@ -31,7 +45,7 @@ public class Napoved implements Rules{
 		@Override
 		protected String doInBackground(String... arg0) {
 			for (int i=0;i<hardCoded.length;i++) {
-				if (URLexists(imageRoot+hardCoded[i])) {
+				if (touchImage(imageRoot+hardCoded[i])) {
 					found[OffsetMax]=hardCoded[i];
 					OffsetMax++;
 				}

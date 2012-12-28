@@ -54,14 +54,12 @@ public class TouchImageView extends ImageView {
     float maxScale = 3f;
     float[] m;
 
-
-    int viewWidth, viewHeight;
+        int viewWidth, viewHeight;
     static final int CLICK = 3;
     float saveScale = 1f;
     protected float origWidth, origHeight;
     int oldMeasuredWidth, oldMeasuredHeight;
 
-   
     ScaleGestureDetector mScaleDetector;
     GestureDetector mTapDetector;
     ScaleListener sl;
@@ -71,7 +69,8 @@ public class TouchImageView extends ImageView {
 	private Bitmap saveRef;
 	private int bmWidth;
 	private int bmHeight;
-
+	
+	
     public TouchImageView(Context context) {
         super(context);
         sharedConstructing(context);
@@ -182,7 +181,7 @@ public class TouchImageView extends ImageView {
         });
     }
 
-	private void drawGradRigth(float n) {
+	private boolean drawGradRigth(float n) {
     	Canvas canvas=new Canvas(bmap);
     	float[] mtrx=new float[9];
 		matrix.getValues(mtrx);
@@ -205,10 +204,10 @@ public class TouchImageView extends ImageView {
     	p.setShader(radial);
     	canvas.drawCircle(x-w+r, y+h/2, r, p);
     	
-    	
+    	return true;
     }
    
-    private void drawGradLeft(float n) {
+    private boolean drawGradLeft(float n) {
     	Canvas canvas=new Canvas(bmap);
     	float[] mtrx=new float[9];
 		matrix.getValues(mtrx);
@@ -229,13 +228,16 @@ public class TouchImageView extends ImageView {
     	
     	p.setShader(radial);
     	canvas.drawCircle(x+w-r, y+h/2, r, p);
+    	
+    	return true;
     }
     
-    private void drawGradCancel() {
+    private boolean drawGradCancel() {
     	if(bmap != null) {
 	    	bmap = saveRef.copy(Bitmap.Config.ARGB_8888, true);
 	    	super.setImageBitmap(bmap);
     	}
+    	return true;
     }
 
     public void setMaxZoom(float x) {
@@ -246,12 +248,13 @@ public class TouchImageView extends ImageView {
     @Override
     public void setImageBitmap(Bitmap bm) { 
     	
-        if(bm != null) {
+        if(bm != null && bm.getWidth()>100 && bm.getHeight()>100) {
+        	if (getVisibility()==View.INVISIBLE) setVisibility(View.VISIBLE);
         	saveRef=bm;
         	bmap = bm.copy(Bitmap.Config.ARGB_8888, true);
-        	
         	super.setImageBitmap(bmap);
         }
+        else setVisibility(View.INVISIBLE);
     }
 
     public void scaleOnDoubleTap(){
@@ -268,10 +271,6 @@ public class TouchImageView extends ImageView {
         }
     	else {
     		tarScale= nDisp>nIm ?  (float)viewWidth/(float)bmWidth : (float)viewHeight/(float)bmHeight;
-        	//tarScale= nDisp>nIm ? viewWidth/bmWidth : bmWidth/bmHeight;
-    		Log.d("scale","viewWidth: "+viewWidth+" bmWidth: "+bmWidth);
-    		Log.d("scale","viewHeight: "+viewHeight+" bmHeight: "+bmHeight);
-    		Log.d("scale","tar: "+tarScale+" mat: "+curScale+" save: "+saveScale);
     		this.setScale(tarScale/curScale);
     	}
         
@@ -296,7 +295,7 @@ public class TouchImageView extends ImageView {
             float x = e.getX();
             float y = e.getY();
 
-            Log.d("Double Tap", "Tapped at: (" + x + "," + y + ")");
+            //Log.d("Double Tap", "Tapped at: (" + x + "," + y + ")");
             scaleOnDoubleTap();
             return true;
         }
@@ -410,7 +409,7 @@ public class TouchImageView extends ImageView {
             bmWidth = drawable.getIntrinsicWidth();
             bmHeight = drawable.getIntrinsicHeight();
             
-            Log.d("bmSize", "bmWidth: " + bmWidth + " bmHeight : " + bmHeight);
+            //Log.d("bmSize", "bmWidth: " + bmWidth + " bmHeight : " + bmHeight);
 
             float scaleX = (float) viewWidth / (float) bmWidth;
             float scaleY = (float) viewHeight / (float) bmHeight;

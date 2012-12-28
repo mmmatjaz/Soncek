@@ -16,12 +16,14 @@ public class Satelit implements Rules{
 	boolean b;
 	int offMax;
 	ImageActivity tata;
+	private final static int no1=25;
+	private final static int no2=16;
 	
 	public Satelit()
 	{
 		regionCat=1;
 		b=regionCat==0?true:false;
-		offMax=regionCat==1? 25:16;
+		offMax=regionCat==1? no1:no2;
 	}
 	@Override
 	public void Initialize(ImageActivity ia, File cf) {
@@ -44,7 +46,7 @@ public class Satelit implements Rules{
 
 	@Override
 	public int getNoImages() {
-		return regionCat==1? 25:16;
+		return regionCat==1? no1:no2;
 	}
 
 	@Override

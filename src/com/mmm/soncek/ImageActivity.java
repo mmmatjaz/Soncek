@@ -8,6 +8,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -149,11 +150,21 @@ public class ImageActivity extends Activity{
 		int temp=Offset;
 		mSeekBar.setMax(OffsetMax);
 		mSeekBar.setProgress(temp);
-		mImageView.setMaxHeight(mImageView.getHeight()-mBottomLinLay.getHeight());
-		//mImageView.height=mImageView.getHeight()-mBottomLinLay.getHeight();
 		updateDisplay();
 	}
 	
+	public void changeMap(){
+		timerRunning=false;
+	        	
+    	Rules.setOption(0);
+    	Rules.Initialize(this, cachePath);
+    	Offset = 	Rules.getInitialOffset();
+    	OffsetMax=	Rules.getNoImages();
+		int temp=Offset;
+		mSeekBar.setMax(OffsetMax);
+		mSeekBar.setProgress(temp);
+		updateDisplay();
+	}
 	
 	@Override
 	public void onPause() 	{
@@ -242,6 +253,7 @@ public class ImageActivity extends Activity{
 	    	Bitmap bm= BitmapFactory.decodeFile(fn);
 	    	mImageView.setImageBitmap(bm);
     	} catch (Exception e) {
+    		//Log.d("nini","a: "+e.toString());
     	}
     	
     	if (timerRunning) {

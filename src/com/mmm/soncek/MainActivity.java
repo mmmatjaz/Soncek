@@ -120,9 +120,13 @@ public class MainActivity extends Activity {
 		SharedPreferences settings = getSharedPreferences("prefs", 0);
 		bgIm.setVisibility(View.VISIBLE);
 		bgIm.startAnimation(AnimationUtils.loadAnimation(this, android.R.anim.fade_in));
-    	if (settings.getBoolean("welcomeRead", false))
+    	
+		checkConnection();
+		/*
+		if (settings.getBoolean("welcomeRead", false))
     		checkConnection();
-    	else changeView(ActLayouts.Welcome.ordinal(),false);	
+    	else changeView(ActLayouts.Welcome.ordinal(),false);
+    	*/	
 	}
     
     public void deleteOldImages()

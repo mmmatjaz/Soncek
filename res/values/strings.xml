@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-	<string name="welcome">"Sonček je lepši in ima \nnov fičr. Potegni slike \nod stranskih robov in \ndvoklikni za zoom."</string>
+	<string name="welcome">"Sonček je lepši in boljši. \nPotegni slike \nod stranskih robov in \ndvoklikni za zoom."</string>
 	<string name="welcomeeng">Sonček is preetier and has new features. Swipe the images and double tap to zoom!</string>
     <string name="about">"The data is property of Slovenian Environment Agency. Data transmission charges may apply."</string>
     <string name="vreme">www.arso.gov.si</string>

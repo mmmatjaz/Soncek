@@ -72,9 +72,9 @@ public class BackGndDownloader extends AsyncTask<String, String, String>
 		//final String temp=params[0];
 		int dBytes=downloadImage(params[0], params[1]);
 		if (dBytes==-2)
-			return " Ni povezave";
+			return " Ni slike. ";
 		if (dBytes==1)
-			return " Sry, napaka";
+			return " Sry, napaka ";
 		return " Prenesel " +dBytes/1000+ "kB";
 	}
 	

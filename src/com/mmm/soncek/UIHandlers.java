@@ -104,8 +104,9 @@ public class UIHandlers {
 				case MotionEvent.ACTION_UP:
 					iconBack.setAlpha(255);   
 					v.setBackgroundDrawable(iconBack);
-					Intent intent=new Intent(tata.getApplicationContext(),MainActivity.class);
-		    		tata.startActivity(intent);
+					//Intent intent=new Intent(tata.getApplicationContext(),MainActivity.class);
+		    		//tata.startActivity(intent);
+					tata.onBackPressed();
 					break;
 				default:
 					break;
@@ -125,9 +126,7 @@ public class UIHandlers {
 				case MotionEvent.ACTION_UP:
 					iconMenu.setAlpha(255);   
 					v.setBackgroundDrawable(iconMenu);
-					tata.Rules.setOption(0);
-					//tata.RefreshImage(filename)
-					tata.updateDisplay();
+					tata.changeMap();
 					break;
 				default:
 					break;
